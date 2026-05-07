@@ -1,0 +1,163 @@
+<div class="shell">
+
+    <!-- ══ PANEL IZQUIERDO — Info de la clínica ══ -->
+    <aside class="sidebar" [class.sidebar--hidden]="isMobileView()">
+        <div class="sidebar__brand">
+            <div class="avatar avatar--lg">{{ clinicInfo.avatarInitials }}</div>
+            <div>
+                <h1 class="clinic-name">{{ clinicInfo.name }}</h1>
+                <p class="clinic-tagline">{{ clinicInfo.tagline }}</p>
+            </div>
+        </div>
+
+        <div class="sidebar__status">
+            <span class="status-dot"></span>
+            <span class="status-text">En línea ahora</span>
+        </div>
+
+        <div class="sidebar__info">
+            <div class="info-item">
+                <span class="info-icon">🕐</span>
+                <div>
+                    <p class="info-label">Horario de atención</p>
+                    <p class="info-value">{{ clinicInfo.hours }}</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📞</span>
+                <div>
+                    <p class="info-label">Teléfono</p>
+                    <p class="info-value">{{ clinicInfo.phone }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar__demo-badge">
+            <span class="demo-label">Demo interactiva</span>
+            <p class="demo-desc">
+                Escribí cualquier consulta como si fueras un paciente.
+                El asistente responde con IA en tiempo real.
+            </p>
+        </div>
+
+        <button class="btn-reset" (click)="resetConversation()" title="Reiniciar conversación">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                <path d="M3 3v5h5" />
+            </svg>
+            Nueva conversación
+        </button>
+    </aside>
+
+    <!-- ══ PANEL DERECHO — Chat ══ -->
+    <main class="chat-panel">
+
+        <!-- Header mobile -->
+        <header class="chat-header">
+            <div class="chat-header__left">
+                <div class="avatar avatar--sm">{{ clinicInfo.avatarInitials }}</div>
+                <div>
+                    <p class="chat-header__name">{{ clinicInfo.name }}</p>
+                    <p class="chat-header__status">
+                        <span class="status-dot status-dot--sm"></span>
+                        En línea
+                    </p>
+                </div>
+            </div>
+            <button class="btn-icon" (click)="resetConversation()" title="Reiniciar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" />
+                </svg>
+            </button>
+        </header>
+
+        <!-- Área de mensajes -->
+        <section class="messages-area" #messagesArea>
+
+            <!-- Estado vacío con sugerencias -->
+            @if (!chatService.hasMessages()) {
+            <div class="empty-state" @fadeIn>
+                <div class="empty-state__icon">
+                    <div class="avatar avatar--xl">{{ clinicInfo.avatarInitials }}</div>
+                    <span class="online-ring"></span>
+                </div>
+                <h2 class="empty-state__title">Hola, ¿en qué puedo ayudarte?</h2>
+                <p class="empty-state__subtitle">Soy el asistente de {{ clinicInfo.name }}. Consultame sobre turnos,
+                    servicios, obras sociales o cualquier duda que tengas.</p>
+
+                <div class="suggestions">
+                    @for (suggestion of suggestions; track suggestion) {
+                    <button class="suggestion-chip" (click)="sendSuggestion(suggestion)">
+                        {{ suggestion }}
+                    </button>
+                    }
+                </div>
+            </div>
+            }
+
+            <!-- Mensajes -->
+            @for (message of chatService.messages(); track message.id) {
+            <div class="message-row" [class.message-row--user]="message.role === 'user'">
+                @if (message.role === 'assistant') {
+                <div class="avatar avatar--sm avatar--bot">{{ clinicInfo.avatarInitials }}</div>
+                }
+                <div class="bubble-wrapper">
+                    <div class="bubble" [class.bubble--user]="message.role === 'user'"
+                        [class.bubble--bot]="message.role === 'assistant'"
+                        [class.bubble--escalated]="message.escalated">
+                        <p class="bubble__text">{{ message.content }}</p>
+                        @if (message.escalated) {
+                        <div class="escalation-hint">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.9 13.5 19.79 19.79 0 0 1 1.88 5.07 2 2 0 0 1 3.87 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17.92z" />
+                            </svg>
+                            Derivado a profesional
+                        </div>
+                        }
+                    </div>
+                    <span class="bubble__time">{{ formatTime(message.timestamp) }}</span>
+                </div>
+            </div>
+            }
+
+            <!-- Indicador de typing -->
+            @if (chatService.isLoading()) {
+            <div class="message-row">
+                <div class="avatar avatar--sm avatar--bot">{{ clinicInfo.avatarInitials }}</div>
+                <div class="typing-bubble">
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                    <span class="typing-dot"></span>
+                </div>
+            </div>
+            }
+
+            <!-- Ancla de scroll -->
+            <div #scrollAnchor></div>
+        </section>
+
+        <!-- Input area -->
+        <footer class="input-area">
+            <div class="input-wrapper">
+                <textarea #messageInput placeholder="Escribí tu consulta..." rows="1" class="message-input"
+                    [disabled]="chatService.isLoading()" (input)="onInput($event)"></textarea>
+
+                <button class="send-btn" [class.send-btn--active]="inputHasText()"
+                    [disabled]="!inputHasText() || chatService.isLoading()" (click)="sendMessage()" title="Enviar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m22 2-7 20-4-9-9-4Z" />
+                        <path d="M22 2 11 13" />
+                    </svg>
+                </button>
+            </div>
+            <p class="input-hint">Enter para enviar · Shift+Enter para nueva línea</p>
+        </footer>
+
+    </main>
+</div>

@@ -1,0 +1,132 @@
+/* ============================================================
+   WAAGENT FRONTEND — Design System
+   Aesthetic: Medical-tech refinado
+   Paleta: Blanco clínico + Verde pino profundo + Gris cálido
+   ============================================================ */
+
+/* --- Tokens ------------------------------------------------- */
+:root {
+    /* Colores principales */
+    --color-brand: #1a4a3a;
+    /* verde pino — confianza, salud */
+    --color-brand-mid: #2d6b55;
+    /* hover states */
+    --color-brand-light: #e8f4f0;
+    /* backgrounds suaves */
+    --color-brand-soft: #b8ddd3;
+    /* borders, separators */
+
+    /* Neutrales */
+    --color-surface: #ffffff;
+    --color-bg: #f6f5f2;
+    /* cálido, no frío */
+    --color-bg-chat: #f0eeea;
+    --color-text-primary: #1c1c1a;
+    --color-text-mid: #4a4a47;
+    --color-text-muted: #8a8a85;
+    --color-border: #e2e0db;
+
+    /* Burbujas de chat */
+    --bubble-user: #1a4a3a;
+    --bubble-user-text: #ffffff;
+    --bubble-bot: #ffffff;
+    --bubble-bot-text: #1c1c1a;
+    --bubble-bot-border: #e2e0db;
+
+    /* Tipografía */
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+
+    /* Espacios */
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-full: 9999px;
+
+    /* Sombras */
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, .06), 0 4px 16px rgba(0, 0, 0, .04);
+    --shadow-input: 0 0 0 3px rgba(26, 74, 58, .15);
+}
+
+/* --- Reset -------------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: var(--font-body);
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+}
+
+/* --- Scrollbar (webkit) ------------------------------------- */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-brand-soft);
+    border-radius: 2px;
+}
+
+/* --- Animaciones globales ----------------------------------- */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes typingDot {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: .4;
+    }
+
+    30% {
+        transform: translateY(-4px);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .5;
+    }
+}
