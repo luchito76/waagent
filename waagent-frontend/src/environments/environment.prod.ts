@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    // Reemplazar con la URL real de Railway antes del deploy
-    apiUrl: 'https://TU-BACKEND.up.railway.app',
+    // Reemplazar con la URL real de Render backend antes del deploy
+    apiUrl: 'https://waagent-backend.onrender.com',
 };
