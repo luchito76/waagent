@@ -1,11 +1,11 @@
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
-import { env } from '../../config/env.js';
-import { TenantService } from '../tenant/tenant.service.js';
-import { TenantRepository } from '../tenant/tenant.repository.js';
-import { ConversationService } from '../conversation/conversation.service.js';
-import { AgentService } from '../agent/agent.service.js';
-import { WhatsAppService } from './whatsapp.service.js';
-import type { MetaWebhookPayload } from '../../shared/types/index.js';
+import { env } from '../../config/env';
+import { TenantService } from '../tenant/tenant.service';
+import { TenantRepository } from '../tenant/tenant.repository';
+import { ConversationService } from '../conversation/conversation.service';
+import { AgentService } from '../agent/agent.service';
+import { WhatsAppService } from './whatsapp.service';
+import type { MetaWebhookPayload } from '../../shared/types/index';
 
 const tenantService = new TenantService(new TenantRepository());
 const conversationService = new ConversationService();

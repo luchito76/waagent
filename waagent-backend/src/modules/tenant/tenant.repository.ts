@@ -1,4 +1,4 @@
-import { TenantModel, type TenantDocument } from './tenant.model.js';
+import { TenantModel, type TenantDocument } from './tenant.model';
 
 export class TenantRepository {
     async findBySlug(slug: string): Promise<TenantDocument | null> {

@@ -1,4 +1,4 @@
-import type { TenantDocument } from '../tenant/tenant.model.js';
+import type { TenantDocument } from '../tenant/tenant.model';
 
 /**
  * Construye el system prompt dinámicamente por tenant.

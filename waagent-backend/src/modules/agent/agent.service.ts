@@ -1,10 +1,10 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { env } from '../../config/env.js';
-import { buildSystemPrompt, detectEscalation } from './prompt.builder.js';
-import { RagService } from './rag.service.js';
-import type { ConversationService } from '../conversation/conversation.service.js';
-import type { TenantDocument } from '../tenant/tenant.model.js';
-import type { ConversationDocument } from '../conversation/conversation.model.js';
+import { env } from '../../config/env';
+import { buildSystemPrompt, detectEscalation } from './prompt.builder';
+import { RagService } from './rag.service';
+import type { ConversationService } from '../conversation/conversation.service';
+import type { TenantDocument } from '../tenant/tenant.model';
+import type { ConversationDocument } from '../conversation/conversation.model';
 
 const MODEL = 'claude-sonnet-4-5';
 const MAX_TOKENS = 500; // Suficiente para WhatsApp; limita costo

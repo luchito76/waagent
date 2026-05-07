@@ -1,5 +1,5 @@
-import { TenantRepository } from './tenant.repository.js';
-import type { TenantDocument } from './tenant.model.js';
+import { TenantRepository } from './tenant.repository';
+import type { TenantDocument } from './tenant.model';
 
 export class TenantService {
     constructor(private readonly repo: TenantRepository) { }

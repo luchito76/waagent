@@ -1,5 +1,5 @@
 import { Schema, model, type Document } from 'mongoose';
-import type { ITenant, BusinessType } from '../../shared/types/index.js';
+import type { ITenant, BusinessType } from '../../shared/types/index';
 
 export interface TenantDocument extends Omit<ITenant, '_id'>, Document { }
 

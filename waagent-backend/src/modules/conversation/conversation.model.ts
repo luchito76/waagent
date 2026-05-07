@@ -1,5 +1,5 @@
 import { Schema, model, type Document, type Types } from 'mongoose';
-import type { IConversation, IMessage } from '../../shared/types/index.js';
+import type { IConversation, IMessage } from '../../shared/types/index';
 
 export interface ConversationDocument extends Omit<IConversation, '_id'>, Document { }
 

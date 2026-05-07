@@ -9,7 +9,7 @@
 
 import 'dotenv/config';
 import mongoose from 'mongoose';
-import { TenantModel } from '../src/modules/tenant/tenant.model.js';
+import { TenantModel } from '../../src/modules/tenant/tenant.model';
 
 const DEMO_TENANT = {
     name: 'Clínica Patagonia',

@@ -1,4 +1,4 @@
-import type { TenantDocument } from '../tenant/tenant.model.js';
+import type { TenantDocument } from '../tenant/tenant.model';
 
 const META_API_VERSION = 'v19.0';
 const META_BASE_URL = 'https://graph.facebook.com';

@@ -2,9 +2,9 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
-import { env } from './config/env.js';
+import { env } from './config/env';
 import { connectDatabase } from './shared/database/connections';
-import { webhookRoutes } from './modules/whatsapp/webhook.controller.js';
+import { webhookRoutes } from './modules/whatsapp/webhook.controller';
 import { chatRoutes } from './modules/chat/chat.routes';
 
 async function bootstrap(): Promise<void> {

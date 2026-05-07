@@ -1,6 +1,6 @@
 import type { Types } from 'mongoose';
-import { ConversationModel, type ConversationDocument } from './conversation.model.js';
-import type { IMessage } from '../../shared/types/index.js';
+import { ConversationModel, type ConversationDocument } from './conversation.model';
+import type { IMessage } from '../../shared/types/index';
 
 const MAX_HISTORY_MESSAGES = 10;
 

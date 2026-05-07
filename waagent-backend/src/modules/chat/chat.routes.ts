@@ -1,12 +1,12 @@
 import type { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 import { randomUUID } from 'crypto';
 import { z } from 'zod';
-import { env } from '../../config/env.js';
-import { TenantService } from '../tenant/tenant.service.js';
+import { env } from '../../config/env';
+import { TenantService } from '../tenant/tenant.service';
 import { TenantRepository } from '../tenant/tenant.repository';
-import { ConversationService } from '../conversation/conversation.service.js';
-import { AgentService } from '../agent/agent.service.js';
-import type { ChatRequest, ChatResponse } from '../../shared/types/index.js';
+import { ConversationService } from '../conversation/conversation.service';
+import { AgentService } from '../agent/agent.service';
+import type { ChatRequest, ChatResponse } from '../../shared/types/index';
 
 const tenantService = new TenantService(new TenantRepository());
 const conversationService = new ConversationService();
