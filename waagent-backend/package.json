@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "WhatsApp AI Agent - Multi-tenant backend",
     "main": "dist/main.js",
-    "type": "module",
     "scripts": {
         "dev": "tsx watch src/main.ts",
         "build": "tsc",
