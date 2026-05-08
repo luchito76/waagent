@@ -29,7 +29,10 @@ async function bootstrap(): Promise<void> {
 
     await app.register(cors, {
         // En producción, restringir a tu dominio Angular
-        origin: env.NODE_ENV === 'development' ? true : ['https://waagent-eight.vercel.app'],
+        origin: [
+            'http://localhost:4200',
+            'https://waagent-frontend.vercel.app', // ← tu URL real de Vercel
+        ],
         methods: ['GET', 'POST'],
     });
 
