@@ -39,7 +39,7 @@ export const DEMO_SUGGESTIONS: string[] = [
 export const CLINIC_INFO: ClinicInfo = {
     name: 'Clínica Patagonia',
     tagline: 'Asistente virtual · Disponible 24hs',
-    phone: '299 4XX-XXXX',
+    phone: '299 1XX-XXXX',
     hours: 'Lun–Vie 8–20 · Sáb 8–13',
     avatarInitials: 'CP',
 };
