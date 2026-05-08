@@ -31,7 +31,7 @@ async function bootstrap(): Promise<void> {
         // En producción, restringir a tu dominio Angular
         origin: [
             'http://localhost:4200',
-            'https://waagent-frontend.vercel.app', // ← tu URL real de Vercel
+            'https://waagent-eight.vercel.app/', // ← tu URL real de Vercel
         ],
         methods: ['GET', 'POST'],
     });
