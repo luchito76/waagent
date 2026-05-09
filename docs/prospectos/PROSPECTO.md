@@ -26,13 +26,13 @@ Tengo una demo funcionando si querés ver cómo queda para una clínica como la 
 ---
 
 ## Estados posibles
-- `PENDIENTE` — No contactado aún
-- `ENVIADO` — Mensaje enviado, esperando respuesta
-- `RESPONDIÓ` — Respondió, en conversación
-- `DEMO` — Demo agendada o realizada
-- `PROPUESTA` — Propuesta enviada
-- `CERRADO` — Cliente pago ✅
-- `DESCARTADO` — No interesado o no es el decisor
+- `PENDIENTE` — No contactado aún,
+- `ENVIADO` — Mensaje enviado, esperando respuesta,
+- `RESPONDIÓ` — Respondió, en conversación,
+- `DEMO` — Demo agendada o realizada,
+- `PROPUESTA` — Propuesta enviada,
+- `CERRADO` — Cliente pago ✅,
+- `DESCARTADO` — No interesado o no es el decisor,
 
 ---
 
